@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.users._nav')
+{{--    @include('admin.users._nav')--}}
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item"><a class="nav-link" href="{{route('admin.home')}}">Dashboard</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{route('admin.users.index')}}">Users</a></li>
+</ul>
 
     <form method="POST" action="{{ route('admin.users.store') }}">
         @csrf
-
         <div class="form-group">
             <label for="name" class="col-form-label">Name</label>
             <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
