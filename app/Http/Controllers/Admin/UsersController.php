@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entity\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\CreateRequest;
+use App\Http\Requests\Admin\Users\UpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,16 +24,12 @@ class UsersController extends Controller
         return view('admin.users.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-        ]);
-
-        $data['password'] = bcrypt(Str::random());
-
-        $user = User::create($data);
+        $user = User::new(
+          $request['name'],
+          $request['email']
+        );
 
         return redirect()->route('admin.users.show', $user);
     }
@@ -47,14 +45,9 @@ class UsersController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,id,',
-        ]);
-
-        $user->update($data);
+        $user->update($request->only(['name', 'email']));
 
         return redirect()->route('admin.users.show', $user);
     }
