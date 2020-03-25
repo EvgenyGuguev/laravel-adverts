@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Entity\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -21,43 +22,47 @@ class UsersController extends Controller
         return view('admin.users.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $user = User::create($this->validateRequest());
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
+
+        $data['password'] = bcrypt(Str::random());
+
+        $user = User::create($data);
 
         return redirect()->route('admin.users.show', $user);
     }
 
     public function show(User $user)
     {
-        return view('admin.users.show', $user);
+        return view('admin.users.show', compact('user'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', $user);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
-        $user->update($this->validateRequest());
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,id,',
+        ]);
 
-        return view('admin.users.show', $user);
+        $user->update($data);
+
+        return redirect()->route('admin.users.show', $user);
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return view('admin.users.index');
-    }
-
-    protected function validateRequest(): array
-    {
-        return  (\request()->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]));
-
+        return redirect()->route('admin.users.index');
     }
 }
