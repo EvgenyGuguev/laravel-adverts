@@ -38,12 +38,22 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public static function new($name, $email): self
+    public static function new ($name, $email): self
     {
         return static::create([
             'name' => $name,
             'email' => $email,
             'password' => bcrypt(Str::random()),
         ]);
+    }
+
+    public function verify()
+    {
+//        $this->email_verified_at = now();
+//
+//        $this->save();
+
+        $this->forceFill(['email_verified_at' => now()]);
+        $this->update();
     }
 }
