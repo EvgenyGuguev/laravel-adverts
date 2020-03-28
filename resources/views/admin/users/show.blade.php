@@ -15,11 +15,13 @@
             @method('DELETE')
             <button class="btn btn-danger">Delete</button>
         </form>
-        <form method="POST" action="{{ $user->verify() }}" class="mr-1">
+
+        @if($user->email_verified_at == null)
+        <form method="POST" action="{{ route('admin.users.verify', $user) }}" class="mr-1">
             @csrf
-            @method('PATCH')
-            <button class="btn btn-success">Verify</button>
+            <button class="btn btn-success mr-1">Verify</button>
         </form>
+        @endif
     </div>
 
     <table class="table table-bordered table-striped">
@@ -36,9 +38,9 @@
             <tr>
                 <th>Status</th>
                 @if($user->email_verified_at)
-                <td>Not verified</td>
-                @else
                 <td>Verified</td>
+                @else
+                <td>Not verified</td>
                 @endif
             </tr>
         </tbody>

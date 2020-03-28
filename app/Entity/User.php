@@ -49,11 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function verify()
     {
-//        $this->email_verified_at = now();
-//
-//        $this->save();
-
         $this->forceFill(['email_verified_at' => now()]);
-        $this->update();
+        $this->save();
     }
+
+
 }

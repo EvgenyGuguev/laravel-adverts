@@ -46,7 +46,7 @@ class UsersController extends Controller
     {
         $user->update($request->only(['name', 'email']));
 
-        return redirect()->route('admin.users.show', $user);
+        return redirect()->route('admin.users.show', compact('user'));
     }
 
     public function destroy(User $user)
@@ -54,5 +54,11 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index');
+    }
+
+    public function verify(User $user)
+    {
+        $user->verify();
+        return redirect()->route('admin.users.show', $user);
     }
 }
