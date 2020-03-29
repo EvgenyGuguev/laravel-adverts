@@ -18,6 +18,7 @@
                     <td>Name</td>
                     <td>Email</td>
                     <td>Status</td>
+                    <td>Role</td>
                 </tr>
             </thead>
         <tbody>
@@ -26,11 +27,28 @@
                     <td>{{$user->id}}</td>
                     <td><a href="{{route('admin.users.show', $user)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
-                    @if($user->email_verified_at)
-                        <td class="alert-success">Verified</td>
-                    @else
-                        <td class="alert-danger">Not verified</td>
-                    @endif
+
+{{--                    @if($user->email_verified_at)--}}
+{{--                        <td class="alert-success">Verified</td>--}}
+{{--                    @else--}}
+{{--                        <td class="alert-danger">Not verified</td>--}}
+{{--                    @endif--}}
+                    <td>
+                        @if($user->email_verified_at)
+                            <span class="badge badge-primary px-2 py-2">Verified</span>
+                        @else
+                            <span class="badge badge-secondary px-2 py-2">Not verified</span>
+                        @endif
+                    </td>
+
+                    <td>
+                        @if($user->isAdmin())
+                            <span class="badge badge-danger px-2 py-2">Admin</span>
+                        @else
+                            <span class="badge badge-secondary px-2 py-2">User</span>
+                        @endif
+                    </td>
+
                 </tr>
             @endforeach
 

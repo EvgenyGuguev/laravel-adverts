@@ -36,12 +36,24 @@
                 <th>Email</th><td>{{$user->email}}</td>
             </tr>
             <tr>
+                <th>Role</th>
+                <td>
+                    @if ($user->isAdmin())
+                        <span class="badge badge-danger px-2 py-2">Admin</span>
+                    @else
+                        <span class="badge badge-secondary px-2 py-2">User</span>
+                    @endif
+                </td>
+            </tr>
+            <tr>
                 <th>Status</th>
-                @if($user->email_verified_at)
-                <td>Verified</td>
-                @else
-                <td>Not verified</td>
-                @endif
+                <td>
+                    @if ($user->email_verified_at)
+                        <span class="badge badge-primary px-2 py-2">Verified</span>
+                    @else
+                        <span class="badge badge-secondary px-2 py-2">Not verified</span>
+                    @endif
+                </td>
             </tr>
         </tbody>
     </table>

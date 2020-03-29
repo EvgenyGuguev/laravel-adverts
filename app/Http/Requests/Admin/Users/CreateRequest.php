@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Users;
 
+use App\Entity\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateRequest extends FormRequest

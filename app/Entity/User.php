@@ -11,13 +11,16 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
+    public const ROLE_USER = 'user';
+    public const ROLE_ADMIN = 'admin';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -44,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'name' => $name,
             'email' => $email,
             'password' => bcrypt(Str::random()),
+            'role' => self::ROLE_USER,
         ]);
     }
 
@@ -53,5 +57,19 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
+    public function changeRole($role)
+    {
+        if (!in_array($role, [self::ROLE_USER, self::ROLE_ADMIN], true)) {
+            throw new \InvalidArgumentException('Undefined role  "'. $role .'" ');
+        }
+        if ($this->role === $role) {
+            throw  new \DomainException('Role is already assigned.');
+        }
+        $this->update(['role' => $role]);
+    }
 
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
 }
