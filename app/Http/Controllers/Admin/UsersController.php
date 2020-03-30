@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {

@@ -12,6 +12,32 @@
 
 namespace App\Entity{
 /**
+ * App\Entity\Region
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int|null $parent_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entity\Region[] $children
+ * @property-read int|null $children_count
+ * @property-read \App\Entity\Region|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Region whereUpdatedAt($value)
+ */
+	class Region extends \Eloquent {}
+}
+
+namespace App\Entity{
+/**
  * App\Entity\User
  *
  * @property int $id
@@ -22,6 +48,7 @@ namespace App\Entity{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $role
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User newModelQuery()
@@ -34,6 +61,7 @@ namespace App\Entity{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
