@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Entity\User;
+use App\Entity\Region;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,5 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(UsersTableSeeder::class);
+         $this->call(RegionsTableSeeder::class);
     }
 }
