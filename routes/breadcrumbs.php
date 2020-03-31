@@ -2,6 +2,7 @@
 
 use App\Entity\User;
 use App\Entity\Region;
+use App\Entity\Adverts\Category;
 
 // Home
 Breadcrumbs::for('home', function ($trail) {
@@ -108,6 +109,39 @@ Breadcrumbs::for('admin.regions.show', function ($trail, Region $region) {
 Breadcrumbs::for('admin.regions.edit', function ($trail, Region $region) {
     $trail->parent('admin.regions.show', $region);
     $trail->push('Edit', route('admin.regions.edit', $region));
+});
+
+
+
+#############################################
+# Admin/Categories
+
+// Home > Admin > Categories
+Breadcrumbs::for('admin.adverts.categories.index', function ($trail) {
+    $trail->parent('admin.home');
+    $trail->push('Categories', route('admin.adverts.categories.index'));
+});
+
+// Home > Admin > Create Categories
+Breadcrumbs::for('admin.adverts.categories.create', function ($trail) {
+    $trail->parent('admin.adverts.categories.index');
+    $trail->push('Create', route('admin.adverts.categories.create'));
+});
+
+// Home > Admin > Show Categories
+Breadcrumbs::for('admin.adverts.categories.show', function ($trail, Category $category) {
+    if ($parent = $category->parent) {
+        $trail->parent('admin.adverts.categories.show', $parent);
+    } else {
+        $trail->parent('admin.adverts.categories.index');
+    }
+    $trail->push($category->name, route('admin.adverts.categories.show', $category));
+});
+
+// Home > Admin > Edit Categories
+Breadcrumbs::for('admin.adverts.categories.edit', function ($trail, Category $category) {
+    $trail->parent('admin.adverts.categories.show', $category);
+    $trail->push('Edit', route('admin.adverts.categories.edit', $category));
 });
 
 

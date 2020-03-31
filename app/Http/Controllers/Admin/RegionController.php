@@ -7,7 +7,6 @@ use App\Entity\Region;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 class RegionController extends Controller
 {
 
