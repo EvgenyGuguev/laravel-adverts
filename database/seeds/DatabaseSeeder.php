@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Entity\User;
 use App\Entity\Region;
+use App\Entity\Adverts\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(UsersTableSeeder::class);
          $this->call(RegionsTableSeeder::class);
+         $this->call(AdvertCategoriesTableSeeder::class);
     }
 }
