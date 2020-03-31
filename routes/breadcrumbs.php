@@ -105,7 +105,7 @@ Breadcrumbs::for('admin.regions.show', function ($trail, Region $region) {
 });
 
 // Home > Admin > Edit Region
-Breadcrumbs::for('admin.regions.edit', function ($trail, User $region) {
+Breadcrumbs::for('admin.regions.edit', function ($trail, Region $region) {
     $trail->parent('admin.regions.show', $region);
     $trail->push('Edit', route('admin.regions.edit', $region));
 });

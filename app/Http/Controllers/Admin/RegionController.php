@@ -42,7 +42,7 @@ class RegionController extends Controller
            'parent_id' => $request['parent'],
         ]);
 
-        return redirect()->route('admin.regions.show', $region);
+        return redirect()->route('admin.regions.show', compact('region'));
     }
 
     public function show(Region $region)
