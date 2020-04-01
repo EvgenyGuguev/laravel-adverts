@@ -62,11 +62,11 @@
     <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <td>Id</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Status</td>
-                    <td>Role</td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Role</th>
                 </tr>
             </thead>
         <tbody>

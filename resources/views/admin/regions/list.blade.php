@@ -1,8 +1,8 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <td>Name</td>
-        <td>Slug</td>
+        <th>Name</th>
+        <th>Slug</th>
     </tr>
     </thead>
 
