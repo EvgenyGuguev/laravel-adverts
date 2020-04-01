@@ -10,6 +10,60 @@
  */
 
 
+namespace App\Entity\Adverts{
+/**
+ * App\Entity\Adverts\Attribute
+ *
+ * @property int $id
+ * @property int|null $category_id
+ * @property string $name
+ * @property string $type
+ * @property int $required
+ * @property array $variants
+ * @property int $sort
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Attribute whereVariants($value)
+ */
+	class Attribute extends \Eloquent {}
+}
+
+namespace App\Entity\Adverts{
+/**
+ * App\Entity\Adverts\Category
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $_lft
+ * @property int $_rgt
+ * @property int|null $parent_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Entity\Adverts\Attribute[] $attributes
+ * @property-read int|null $attributes_count
+ * @property-read \Kalnoy\Nestedset\Collection|\App\Entity\Adverts\Category[] $children
+ * @property-read int|null $children_count
+ * @property-read \App\Entity\Adverts\Category|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category d()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|\App\Entity\Adverts\Category newModelQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|\App\Entity\Adverts\Category newQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|\App\Entity\Adverts\Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\Adverts\Category whereSlug($value)
+ */
+	class Category extends \Eloquent {}
+}
+
 namespace App\Entity{
 /**
  * App\Entity\Region
