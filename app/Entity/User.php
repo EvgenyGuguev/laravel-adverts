@@ -14,29 +14,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public const ROLE_USER = 'user';
     public const ROLE_ADMIN = 'admin';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'role'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -57,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
-    public function changeRole($role)
+    public function changeRole($role): void
     {
         if (!in_array($role, [self::ROLE_USER, self::ROLE_ADMIN], true)) {
             throw new \InvalidArgumentException('Undefined role  "'. $role .'" ');

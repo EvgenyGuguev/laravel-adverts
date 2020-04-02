@@ -31,7 +31,7 @@ class RoleTest extends TestCase
     public function role_is_already_assigned()
     {
         $user = factory(User::class)->create(
-            ['role' => User::ROLE_USER]);
+            ['role' => User::ROLE_ADMIN]);
 
         $this->expectExceptionMessage('Role is already assigned.');
 
