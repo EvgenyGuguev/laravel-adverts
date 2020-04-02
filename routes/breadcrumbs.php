@@ -169,17 +169,17 @@ Breadcrumbs::for('admin.adverts.categories.attributes.edit', function ($trail, C
 
 
 
-##########################################
-# Not Use
+#############################################
+# Cabinet
 
-// Home > Blog > [Category]
-Breadcrumbs::for('category', function ($trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category->id));
+// Cabinet > Profile
+Breadcrumbs::for('cabinet.profile.home', function ($trail) {
+    $trail->parent('cabinet.home');
+    $trail->push('Profile', route('cabinet.profile.home'));
 });
 
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
+// Cabinet > Profile > Edit
+Breadcrumbs::for('cabinet.profile.edit', function ($trail) {
+    $trail->parent('cabinet.profile.home');
+    $trail->push('Edit', route('cabinet.profile.edit'));
 });
