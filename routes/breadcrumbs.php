@@ -23,9 +23,9 @@ Breadcrumbs::for('register', function ($trail) {
 });
 
 // Home > Cabinet
-Breadcrumbs::for('cabinet', function ($trail) {
+Breadcrumbs::for('cabinet.home', function ($trail) {
     $trail->parent('home');
-    $trail->push('Cabinet', route('cabinet'));
+    $trail->push('Cabinet', route('cabinet.home'));
 });
 
 // Home > Login > Reset Password
