@@ -96,6 +96,7 @@ namespace App\Entity{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $last_name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -112,6 +113,7 @@ namespace App\Entity{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entity\User whereRememberToken($value)
