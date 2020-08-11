@@ -16,12 +16,12 @@ class CreateTest extends TestCase
     /** @test */
     public function new_user_create()
     {
-//        $user = User::new(
-//            $name = 'name',
-//            $email = 'email'
-//        );
+        $user = User::new(
+            $name = 'name',
+            $email = 'email'
+        );
 
-        $user = factory('App\Entity\User')->create();
+//        $user = factory('App\Entity\User')->create();
 
         $name = $user->name;
         $email = $user->email;

@@ -26,6 +26,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public static function register(string $name, string $email, string $password): self
+    {
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'verify_token' => Str::uuid(),
+            'role' => self::ROLE_USER,
+        ]);
+    }
+
     public static function new ($name, $email): self
     {
         return static::create([

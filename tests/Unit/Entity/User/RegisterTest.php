@@ -14,14 +14,19 @@ class RegisterTest extends TestCase
 
     public function testRequest(): void
     {
-        $user = factory('App\Entity\User')->create();
+        $user = User::register(
+            $name = 'name',
+            $email = 'email',
+            $password = 'password'
+        );
+//        $user = factory('App\Entity\User')->create();
 
         self::assertNotEmpty($user);
 
+        self::assertEquals($name, $user->name);
+        self::assertEquals($email, $user->email);
         self::assertNotEmpty($user->password);
-        self::assertNotEmpty($user->email);
-        self::assertNotEmpty($user->name);
-
+        self::assertNotEquals($password, $user->password);
 
         self::assertFalse($user->isAdmin());
     }

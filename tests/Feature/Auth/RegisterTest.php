@@ -4,11 +4,16 @@
 namespace Tests\Feature\Auth;
 
 use App\Entity\User;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
-    public function testForm(): void
+    use RefreshDatabase, WithFaker;
+
+    public function test_user_see_register_form(): void
     {
         $response = $this->get('/register');
 
@@ -17,7 +22,7 @@ class RegisterTest extends TestCase
             ->assertSee('Register');
     }
 
-    public function testErrors(): void
+    public function test_errors_if_empty_fields(): void
     {
         $response = $this->post('/register', [
             'name' => '',
@@ -31,5 +36,21 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors(['name', 'email', 'password']);
     }
 
+    public function test_success__registration(): void
+    {
+        $user = factory(User::class)->make();
+
+        $response = $this->post('/register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+
+        $response
+            ->assertStatus(302)
+            ->assertRedirect('/cabinet');
+    }
 
 }

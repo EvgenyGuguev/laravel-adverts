@@ -1,0 +1,3 @@
+[submodule "laradock_adverts"]
+	path = laradock_adverts
+	url = https://github.com/Laradock/laradock.git
