@@ -4,6 +4,28 @@ namespace App\Entity\Adverts;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Entity\Adverts\Attribute
+ *
+ * @property int $id
+ * @property int|null $category_id
+ * @property string $name
+ * @property string $type
+ * @property int $required
+ * @property array $variants
+ * @property int $sort
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereVariants($value)
+ * @mixin \Eloquent
+ */
 class Attribute extends Model
 {
     public const TYPE_STRING = 'string';

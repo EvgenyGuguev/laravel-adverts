@@ -10,6 +10,12 @@ Breadcrumbs::for('home', function ($trail) {
     $trail->push('Home', route('home'));
 });
 
+// Login > Phone
+Breadcrumbs::for('login.phone', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Verify email', route('login.phone'));
+});
+
 // Home > Login
 Breadcrumbs::for('login', function ($trail) {
     $trail->parent('home');
@@ -178,8 +184,20 @@ Breadcrumbs::for('cabinet.profile.home', function ($trail) {
     $trail->push('Profile', route('cabinet.profile.home'));
 });
 
+// Cabinet > Adverts > index
+Breadcrumbs::for('cabinet.adverts.index', function ($trail) {
+    $trail->parent('cabinet.home');
+    $trail->push('Adverts', route('cabinet.adverts.index'));
+});
+
 // Cabinet > Profile > Edit
 Breadcrumbs::for('cabinet.profile.edit', function ($trail) {
     $trail->parent('cabinet.profile.home');
     $trail->push('Edit', route('cabinet.profile.edit'));
+});
+
+// Cabinet > profile > phone
+Breadcrumbs::for('cabinet.profile.phone', function ($trail) {
+    $trail->parent('cabinet.profile.home');
+    $trail->push('Phone', route('cabinet.profile.phone'));
 });
