@@ -133,6 +133,8 @@ namespace App\Entity{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property bool $phone_auth
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhoneAuth($value)
  */
 	class User extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
 }
